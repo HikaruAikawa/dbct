@@ -41,7 +41,5 @@ ctx.imageSmoothingEnabled = false;
 
 // Executed when all icons are loaded
 function onAllImagesLoaded() {
-	ctx.drawImage(images["detective"],0,0,iconWidth,iconHeight);
-	ctx.drawImage(images["widow"],0,iconHeight,iconWidth,iconHeight);
+	startLayout();
 }
-
