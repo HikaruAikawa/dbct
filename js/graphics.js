@@ -38,6 +38,13 @@ ctx.imageSmoothingEnabled = false;
 	addImage("butler");
 	addImage("guest");
 	addImage("nephew");
+	
+	// Adding all the character speech bubbles
+	addImage("detectiveText");
+	addImage("widowText");
+	addImage("butlerText");
+	addImage("guestText");
+	addImage("nephewText");
 
 // Executed when all icons are loaded
 function onAllImagesLoaded() {
