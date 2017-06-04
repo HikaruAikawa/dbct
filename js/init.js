@@ -14,3 +14,4 @@ var ctx = canvas.getContext("2d");
 
 canvas.width = canvasWidth;
 canvas.height = canvasHeight;
+ctx.font = "bold 16px courier";

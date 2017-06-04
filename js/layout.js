@@ -9,6 +9,7 @@ var iconPositions = {
 }
 
 var textBubblePosition = {x: 587, y: 0}
+var textPosition = {x: textBubblePosition.x+48, y: textBubblePosition.y+64}
 
 // Draws the icon of the given character
 function drawIcon(characterName) {
@@ -19,6 +20,7 @@ function drawIcon(characterName) {
 function drawTextBubble(characterName) {
 	ctx.clearRect(textBubblePosition.x, textBubblePosition.y, images[characterName+"Text"].width, images[characterName+"Text"].height);
 	ctx.drawImage(images[characterName+"Text"], textBubblePosition.x, textBubblePosition.y);
+	ctx.fillText("This is a test", textPosition.x, textPosition.y);
 }
 
 // Drawing images
