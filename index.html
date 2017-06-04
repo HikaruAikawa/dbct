@@ -10,8 +10,6 @@
 			text-align: center;
 		}
 		canvas {
-			width: 1024px;
-			height: 768px;
 			padding-left: 0;
 			padding-right: 0;
 			margin-left: auto;
@@ -23,10 +21,15 @@
 </head>
 <body>
 
+	<div id="imagesDiv" style="display: none;"> </div>
+
 	<h1>DBCT</h1>
 	<p>Testing</p>
 	
-	<canvas/>
+	<canvas id="mainCanvas" width=1024 height=768> </canvas>
+	
+	<script src="js/init.js"> </script>
+	<script src="js/graphics.js"> </script>
 
 </body>
 </html>
