@@ -32,21 +32,26 @@ ctx.imageSmoothingEnabled = false;
 		isImageLoaded[imageName] = false;
 	}
 	
-	// Adding all character icons
-	addImage("detective");
-	addImage("widow");
-	addImage("butler");
-	addImage("guest");
-	addImage("nephew");
+	// Adding all character icons and speech bubbles
+	characters.forEach(function(character) {
+		addImage(character);
+		addImage(character+"Text");
+	});
 	
-	// Adding all the character speech bubbles
-	addImage("detectiveText");
-	addImage("widowText");
-	addImage("butlerText");
-	addImage("guestText");
-	addImage("nephewText");
 
 // Executed when all icons are loaded
 function onAllImagesLoaded() {
-	startLayout();
+	start();
+}
+
+// Draws the icon of the given character
+function drawIcon(character) {
+	ctx.drawImage(images[character], iconPositions[character].x, iconPositions[character].y, iconWidth, iconHeight);
+}
+
+// Clears the text box and draws another one on it
+function drawTextBubble(character) {
+	ctx.clearRect(textBubblePosition.x, textBubblePosition.y, images[character+"Text"].width, images[character+"Text"].height);
+	ctx.drawImage(images[character+"Text"], textBubblePosition.x, textBubblePosition.y);
+	ctx.fillText("This is a test", textPosition.x, textPosition.y);
 }

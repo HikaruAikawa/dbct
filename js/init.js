@@ -5,6 +5,8 @@ var canvasHeight = 768;
 var iconWidth = 64;
 var iconHeight = 64;
 
+var characters = ["detective", "widow", "butler", "guest", "nephew"];
+
 // Global references
 
 var canvas = document.getElementById("mainCanvas");
