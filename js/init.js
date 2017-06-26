@@ -1,9 +1,12 @@
 // Global variables
 
+var step = 1000/60;
+
 var canvasWidth = 1024;
 var canvasHeight = 768;
 var iconWidth = 64;
 var iconHeight = 64;
+var fontSize = 16;
 
 var characters = ["detective", "widow", "butler", "guest", "nephew"];
 
@@ -16,4 +19,4 @@ var ctx = canvas.getContext("2d");
 
 canvas.width = canvasWidth;
 canvas.height = canvasHeight;
-ctx.font = "bold 16px courier";
+ctx.font = "bold "+fontSize+"px courier";

@@ -53,5 +53,9 @@ function drawIcon(character) {
 function drawTextBubble(character) {
 	ctx.clearRect(textBubblePosition.x, textBubblePosition.y, images[character+"Text"].width, images[character+"Text"].height);
 	ctx.drawImage(images[character+"Text"], textBubblePosition.x, textBubblePosition.y);
-	ctx.fillText("This is a test", textPosition.x, textPosition.y);
+}
+
+// Draws text at the given position
+function drawText(text, x, y) {
+	ctx.fillText(text, x, y);
 }
