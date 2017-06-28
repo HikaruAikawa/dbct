@@ -46,12 +46,12 @@ function onAllImagesLoaded() {
 
 // Draws the icon of the given character
 function drawIcon(character) {
-	ctx.drawImage(images[character], iconPositions[character].x, iconPositions[character].y, iconWidth, iconHeight);
+	ctx.drawImage(images[character], dialogueIcons[character].x, dialogueIcons[character].y, iconWidth, iconHeight);
 }
 
 // Clears the text box and draws another one on it
 function drawTextBubble(character) {
-	ctx.clearRect(textBubblePosition.x, textBubblePosition.y, images[character+"Text"].width, images[character+"Text"].height);
+	//ctx.clearRect(textBubblePosition.x, textBubblePosition.y, images[character+"Text"].width, images[character+"Text"].height);
 	ctx.drawImage(images[character+"Text"], textBubblePosition.x, textBubblePosition.y);
 }
 

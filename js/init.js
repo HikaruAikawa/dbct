@@ -1,6 +1,7 @@
 // Global variables
 
 var step = 1000/60;
+//var step = 100;
 
 var canvasWidth = 1024;
 var canvasHeight = 768;
