@@ -24,8 +24,9 @@ function draw() {
 		dialogueTimer = dialogueTimer + 1;
 		if (dialogueTimer >= dialogueDelay) {
 			dialogueTimer = 0;
-			drawDialogueText();
+			dialogueCursor.next();
 		}
 	}
+	drawDialogueText();
 	
 }

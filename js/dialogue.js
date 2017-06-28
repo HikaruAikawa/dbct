@@ -4,6 +4,10 @@ var dialogueText = "This is a test";
 // The cursor contains the current line and character position to be displayed
 var dialogueCursor = {i: 0, j: 0};
 
+dialogueCursor.next = function() {
+	this.i++;
+}
+
 // Delay should be in frames
 var dialogueTimer = 0;
 var dialogueDelay = 3;
@@ -25,5 +29,4 @@ function drawNextChar () {
 function drawDialogueText () {
 	var text = dialogueText.substr(0, dialogueCursor.i);
 	drawText(text, dialoguePosition.x, dialoguePosition.y);
-	dialogueCursor.i++;
 }
