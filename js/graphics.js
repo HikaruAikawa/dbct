@@ -51,8 +51,8 @@ function drawIcon(character) {
 
 // Clears the text box and draws another one on it
 function drawTextBubble(character) {
-	//ctx.clearRect(textBubblePosition.x, textBubblePosition.y, images[character+"Text"].width, images[character+"Text"].height);
-	ctx.drawImage(images[character+"Text"], textBubblePosition.x, textBubblePosition.y);
+	//ctx.clearRect(textBubbleRect.x, textBubbleRect.y, images[character+"Text"].width, images[character+"Text"].height);
+	ctx.drawImage(images[character+"Text"], textBubbleRect.x, textBubbleRect.y);
 }
 
 // Draws text at the given position

@@ -3,10 +3,7 @@
 function start() {
 	setInterval(draw, step);
 	
-	/*characters.forEach(function(character) {
-		drawIcon(character);
-	});
-	drawTextBubble("guest");*/
+	setDialogueText("This is a very long test to check if different lines really do work");
 }
 // Game loop
 
@@ -19,14 +16,15 @@ function draw() {
 	});
 	drawTextBubble("guest");
 	
-	if (dialogueText.length > 0) {
-		// Draws text from the text buffer
-		dialogueTimer = dialogueTimer + 1;
-		if (dialogueTimer >= dialogueDelay) {
-			dialogueTimer = 0;
+	// Draws text from the text buffer
+	dialogueTimer = dialogueTimer + 1;
+	if (dialogueTimer >= dialogueDelay) {
+		dialogueTimer = 0;
+		if (!dialogueCursor.endReached) {
 			dialogueCursor.next();
 		}
 	}
+	
 	drawDialogueText();
 	
 }
