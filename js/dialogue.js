@@ -19,6 +19,7 @@ dialogueCursor.next = function() {
 	if (this.i == dialogueLines.length - 1 && this.j == dialogueLines[this.i].length - 1) {
 		this.j++;
 		this.endReached = true;
+		gameState = "dialogueInput";
 	}
 	else {
 		this.j++;
@@ -36,6 +37,9 @@ function setDialogueText(newText) {
 	dialogueCursor.i = 0;
 	dialogueCursor.j = 0;
 	var endReached = false;
+	
+	gameState = "dialogue";
+	dialogueLines = [];
 	
 	while (!endReached) {
 		// Inserts the line into dialogueLines and removes it from newText

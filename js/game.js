@@ -3,7 +3,7 @@
 function start() {
 	setInterval(draw, step);
 	
-	setDialogueText("This is a very long test to check if different lines really do work");
+	setDialogueText("This is a long sentence to check if the text is correctly split across multiple lines.");
 	dialogueCharacter = "guest";
 	//ctx.fillStyle = "rgb(255,255,255)";
 }
