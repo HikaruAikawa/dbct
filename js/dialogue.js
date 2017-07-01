@@ -22,7 +22,7 @@ dialogueCursor.next = function() {
 	}
 	else {
 		this.j++;
-		if (this.j >= this.jMax) {
+		if (this.j >= dialogueLines[this.i].length) {
 			this.i++;
 			this.j = 0;
 		}
@@ -32,6 +32,7 @@ dialogueCursor.next = function() {
 
 function setDialogueText(newText) {
 	var i = 0;
+	var j; // j is used to locate the last blank space in the line
 	dialogueCursor.endReached = false;
 	dialogueCursor.i = 0;
 	dialogueCursor.j = 0;
@@ -41,7 +42,14 @@ function setDialogueText(newText) {
 		if (newText.length > dialogueCursor.jMax && i < dialogueCursor.iMax) {
 			// Inserts the line into dialogueLines and removes it from newText
 			dialogueLines[i] = newText.substring(0, dialogueCursor.jMax);
-			newText = newText.substring(dialogueCursor.jMax, newText.length);
+			j = dialogueLines[i].lastIndexOf(" ");
+			if (j != -1) {
+				newText = newText.substring(j+1, newText.length);
+				dialogueLines[i] = dialogueLines[i].substring(0,j);
+			}
+			else {
+				newText = newText.substring(dialogueCursor.jMax, newText.length);
+			}
 			i++;
 		}
 		else {
