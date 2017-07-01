@@ -17,6 +17,7 @@ characters.forEach(function(character) {
 
 // Careful: The text bubble graphic is larger than the actual bubble
 var textBubbleRect = {x: 587, y: 0, w: 437, h: 380};
-//var dialogueRect = {x: textBubbleRect.x+48, y: textBubbleRect.y+64, w: textBubbleRect.w-48, h: textBubbleRect.h-64};
 var dialogueOffset = 32;
 var dialogueRect = {x: textBubbleRect.x+dialogueOffset, y: textBubbleRect.y+dialogueOffset, w: textBubbleRect.w-(2*dialogueOffset), h: textBubbleRect.h-(2*dialogueOffset)};
+
+var dialogueButtonRect = {x: textBubbleRect.x, y: textBubbleRect.y+textBubbleRect.h, w: textBubbleRect.w, h: 32};

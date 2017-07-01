@@ -29,6 +29,8 @@ function draw() {
 	
 	drawDialogueText();
 	
+	drawDialogueButton();
+	
 	//ctx.fillRect(testX, testY, 50, 50);
 	//ctx.strokeRect(dialogueRect.x, dialogueRect.y, dialogueRect.w, dialogueRect.h);
 	

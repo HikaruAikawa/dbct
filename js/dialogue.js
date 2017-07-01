@@ -64,6 +64,7 @@ function setDialogueText(newText) {
 function drawDialogueText () {
 	var i;
 	var lineText;
+	setColour("0,0,0");
 	// Draws each row at its corresponding height
 	for (i = 0; i <= dialogueCursor.i; i++) {
 		// If it's the last row, draws only up to the cursor
