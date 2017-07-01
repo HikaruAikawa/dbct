@@ -27,7 +27,6 @@ dialogueCursor.next = function() {
 			this.j = 0;
 		}
 	}
-	console.log(this.i, this.j);
 }
 
 function setDialogueText(newText) {
@@ -39,14 +38,16 @@ function setDialogueText(newText) {
 	var endReached = false;
 	
 	while (!endReached) {
+		// Inserts the line into dialogueLines and removes it from newText
 		if (newText.length > dialogueCursor.jMax && i < dialogueCursor.iMax) {
-			// Inserts the line into dialogueLines and removes it from newText
 			dialogueLines[i] = newText.substring(0, dialogueCursor.jMax);
 			j = dialogueLines[i].lastIndexOf(" ");
+			// If there is a space, splits the line at the last one
 			if (j != -1) {
 				newText = newText.substring(j+1, newText.length);
 				dialogueLines[i] = dialogueLines[i].substring(0,j);
 			}
+			// Otherwise, saves the entire line
 			else {
 				newText = newText.substring(dialogueCursor.jMax, newText.length);
 			}
@@ -54,6 +55,7 @@ function setDialogueText(newText) {
 		}
 		else {
 			dialogueLines[i] = newText.substring(0,dialogueCursor.jMax);
+			newText = "";
 			endReached = true;
 		}
 	}
