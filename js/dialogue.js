@@ -4,17 +4,20 @@
 var dialogueLines = [];
 // Delay should be in frames
 var dialogueTimer = 0;
-var dialogueDelay = 1;
+var dialogueDelay = 3;
+// The character that is currently speaking
+var dialogueCharacter;
 
 // The cursor contains the current line and character position to be displayed
 var dialogueCursor = {i: 0, j: 0};
-dialogueCursor.iMax = Math.floor(dialogueRect.h / (fontSize*1.20));
-dialogueCursor.jMax = Math.floor(dialogueRect.w / (fontSize*0.68)); // Literally just guessed on these ones
+dialogueCursor.iMax = Math.floor(dialogueRect.h / (fontSize*1));
+dialogueCursor.jMax = Math.floor(dialogueRect.w / (fontSize*0.6)); // Literally just guessed on these ones
 dialogueCursor.endReached = false;
 
 dialogueCursor.next = function() {
 	// Increases the counter only if it's not the last line OR it's not the last character of the last line
-	if (this.i == dialogueLines.length - 1 && this.j == dialogueLines[this.i].length) {
+	if (this.i == dialogueLines.length - 1 && this.j == dialogueLines[this.i].length - 1) {
+		this.j++;
 		this.endReached = true;
 	}
 	else {
@@ -24,6 +27,7 @@ dialogueCursor.next = function() {
 			this.j = 0;
 		}
 	}
+	console.log(this.i, this.j);
 }
 
 function setDialogueText(newText) {
@@ -62,6 +66,4 @@ function drawDialogueText () {
 		}
 		drawText(lineText, dialogueRect.x, dialogueRect.y + (i*fontSize));
 	}
-	//var text = dialogueText.substring(0, dialogueCursor.i);
-	//drawText(text, dialogueRect.x, dialogueRect.y);
 }

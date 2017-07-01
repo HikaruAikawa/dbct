@@ -49,13 +49,12 @@ function drawIcon(character) {
 	ctx.drawImage(images[character], dialogueIcons[character].x, dialogueIcons[character].y, iconWidth, iconHeight);
 }
 
-// Clears the text box and draws another one on it
+// Draws the text box
 function drawTextBubble(character) {
-	//ctx.clearRect(textBubbleRect.x, textBubbleRect.y, images[character+"Text"].width, images[character+"Text"].height);
 	ctx.drawImage(images[character+"Text"], textBubbleRect.x, textBubbleRect.y);
 }
 
 // Draws text at the given position
 function drawText(text, x, y) {
-	ctx.fillText(text, x, y);
+	ctx.fillText(text, x, y+(fontSize/2));
 }
