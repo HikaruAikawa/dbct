@@ -17,6 +17,9 @@ var font = "courier";
 var fontSize = 16;
 var fontRatio = 0.6; // This is the height-to-width ratio of the font
 
+var animation = [];
+var animationTimer = 0;
+
 var testX = 0;
 var testY = 0;
 
