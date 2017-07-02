@@ -5,11 +5,6 @@ var images = {};
 
 ctx.imageSmoothingEnabled = false;
 
-function setColour(colour) {
-	ctx.fillStyle = "rgb("+colour+")";
-	ctx.strokeStyle = "rgb("+colour+")";
-}
-
 // Loading images
 
 	// Will contain true if the image is loaded
@@ -18,8 +13,8 @@ function setColour(colour) {
 	// Returns true if all images are loaded
 	function areAllImagesLoaded() {
 		var ret = true;
-		for (key in isImageLoaded) {
-			if (!isImageLoaded[key]) ret = false;
+		for (imageName in images) {
+			if (!images[imageName].isLoaded) ret = false;
 		}
 		return ret;
 	}
@@ -28,13 +23,14 @@ function setColour(colour) {
 	function addImage(imageName) {
 		var newImage = new Image();
 		newImage.onload = function() {
-			isImageLoaded[imageName] = true;
+			images[imageName].isLoaded = true;
 			if (areAllImagesLoaded()) onAllImagesLoaded();
 		}
 		newImage.src = "assets/"+imageName+".png";
 		imagesDiv.appendChild(newImage);
 		images[imageName] = newImage;
-		isImageLoaded[imageName] = false;
+		images[imageName].isLoaded = false;
+		images[imageName].alpha = 1.0;
 	}
 	
 	// Adding all character icons and speech bubbles
@@ -49,17 +45,19 @@ function onAllImagesLoaded() {
 	start();
 }
 
-// Draws the icon of the given character
+function drawImage(imageName, x, y, w, h) {
+	ctx.globalAlpha = images[imageName].alpha;
+	ctx.drawImage(images[imageName], x, y, w, h);
+}
+
 function drawIcon(character) {
-	ctx.drawImage(images[character], dialogueIcons[character].x, dialogueIcons[character].y, iconWidth, iconHeight);
+	drawImage(character, dialogueIcons[character].x, dialogueIcons[character].y, iconWidth, iconHeight);
 }
 
-// Draws the text box
 function drawTextBubble(character) {
-	ctx.drawImage(images[character+"Text"], textBubbleRect.x, textBubbleRect.y);
+	drawImage(character+"Text", textBubbleRect.x, textBubbleRect.y, textBubbleRect.w, textBubbleRect.h);
 }
 
-// Draws text at the given position
 function drawText(text, x, y) {
 	ctx.fillText(text, x, y+(fontSize/2));
 }
@@ -74,4 +72,13 @@ function drawDialogueButton() {
 	var textY = dialogueButtonRect.y + (dialogueButtonRect.h/2) - (fontSize/2) + 4;
 	setColour("0,0,0");
 	drawText(text, textX, textY);
+}
+
+function setColour(colour) {
+	ctx.fillStyle = "rgb("+colour+")";
+	ctx.strokeStyle = "rgb("+colour+")";
+}
+
+function setAlpha(imageName, newAlpha) {
+	images[imageName].alpha = newAlpha;
 }

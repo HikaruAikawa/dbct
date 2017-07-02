@@ -9,6 +9,9 @@ function start() {
 	currentMoment = -1;  // Initialized as -1 so that nextMoment will set it to 0
 	nextMoment();
 	//ctx.fillStyle = "rgb(255,255,255)";
+	
+	//setAlpha("detective", 0.5);
+	
 }
 
 // Game loop
@@ -23,17 +26,23 @@ function draw() {
 	drawTextBubble(dialogueCharacter);
 	
 	// Draws text from the text buffer
-	dialogueTimer = dialogueTimer + 1;
-	if (dialogueTimer >= dialogueDelay) {
-		dialogueTimer = 0;
-		if (!dialogueCursor.endReached) {
-			dialogueCursor.next();
+	if (gameState == "dialogue") {
+		dialogueTimer = dialogueTimer + 1;
+		if (dialogueTimer >= dialogueDelay) {
+			dialogueTimer = 0;
+			if (!dialogueCursor.endReached) {
+				dialogueCursor.next();
+			}
 		}
 	}
 	
 	drawDialogueText();
+	
 	if (gameState == "dialogueInput") {
 		drawDialogueButton();
+	}
+	if (gameState == "fadeAnimation") {
+		
 	}
 	
 	//ctx.fillRect(testX, testY, 50, 50);
@@ -48,6 +57,7 @@ function nextMoment() {
 		if (moment[0] == "talk") {
 			dialogueCharacter = moment[1];
 			setDialogueText(moment[2]);
+			gameState = "dialogue";
 		}
 	}
 }
