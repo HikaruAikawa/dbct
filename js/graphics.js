@@ -70,7 +70,7 @@ function drawDialogueButton() {
 	ctx.fillRect(dialogueButtonRect.x, dialogueButtonRect.y, dialogueButtonRect.w, dialogueButtonRect.h);
 	var text = "Next";
 	// The last terms are just for fine-tuning, they can be freely changed
-	var textX = dialogueButtonRect.x + (dialogueButtonRect.w/2) - ((text.length/2)*fontSize*0.6) - 8;
+	var textX = dialogueButtonRect.x + (dialogueButtonRect.w/2) - ((text.length/2)*fontSize*fontRatio) - 8;
 	var textY = dialogueButtonRect.y + (dialogueButtonRect.h/2) - (fontSize/2) + 4;
 	setColour("0,0,0");
 	drawText(text, textX, textY);

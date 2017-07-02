@@ -10,8 +10,8 @@ var dialogueCharacter;
 
 // The cursor contains the current line and character position to be displayed
 var dialogueCursor = {i: 0, j: 0};
-dialogueCursor.iMax = Math.floor(dialogueRect.h / (fontSize*1));
-dialogueCursor.jMax = Math.floor(dialogueRect.w / (fontSize*0.6)); // Literally just guessed on these ones
+dialogueCursor.iMax = Math.floor(dialogueRect.h / fontSize);
+dialogueCursor.jMax = Math.floor(dialogueRect.w / (fontSize*fontRatio));
 dialogueCursor.endReached = false;
 
 dialogueCursor.next = function() {

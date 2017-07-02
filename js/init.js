@@ -4,6 +4,9 @@ var step = 1000/60;
 //var step = 1000;
 
 var gameState;
+var scenes = [];
+var currentScene;
+var currentMoment;
 
 var canvasRect = {w: 1024, h: 768};
 var canvasWidth = 1024;
@@ -12,6 +15,7 @@ var iconWidth = 64;
 var iconHeight = 64;
 var font = "courier";
 var fontSize = 16;
+var fontRatio = 0.6; // This is the height-to-width ratio of the font
 
 var testX = 0;
 var testY = 0;
