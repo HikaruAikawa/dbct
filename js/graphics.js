@@ -39,6 +39,8 @@ ctx.imageSmoothingEnabled = false;
 		addImage(character+"Text");
 	});
 	
+	addImage("map");
+	
 
 // Executed when all icons are loaded
 function onAllImagesLoaded() {
@@ -60,6 +62,10 @@ function drawTextBubble(character) {
 
 function drawText(text, x, y) {
 	ctx.fillText(text, x, y+(fontSize/2));
+}
+
+function drawMap() {
+	drawImage("map", map.x, map.y, map.w, map.h);
 }
 
 // Draws the button for advancing dialogue

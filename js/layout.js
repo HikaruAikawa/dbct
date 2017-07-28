@@ -21,3 +21,14 @@ var dialogueOffset = 32;
 var dialogueRect = {x: textBubbleRect.x+dialogueOffset, y: textBubbleRect.y+dialogueOffset, w: textBubbleRect.w-(2*dialogueOffset), h: textBubbleRect.h-(2*dialogueOffset)};
 
 var dialogueButton = {x: textBubbleRect.x, y: textBubbleRect.y+textBubbleRect.h, w: textBubbleRect.w, h: 32};
+
+var map = {
+	x: 0,
+	y: 0,
+	w: 523,
+	h: 412,
+	sections: {
+		"room1": {x: 0, y: 0, w: 261, h: 412},
+		"room2": {x: 261, y: 0, w: 262, h: 412}
+	}
+};

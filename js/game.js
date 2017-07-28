@@ -34,11 +34,16 @@ function draw() {
 		}
 	}
 	
-	drawDialogueText();
+	if (gameState == "dialogue" || gameState == "dialogueInput") {
+		drawDialogueText();
+	}
 	
 	if (gameState == "dialogueInput") {
 		drawDialogueButton();
 	}
+	
+	drawMap();
+	
 	if (gameState == "animation") {
 		var animationType = animation[0];
 		var animationImage = animation[1];
