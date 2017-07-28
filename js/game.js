@@ -49,6 +49,7 @@ function draw() {
 		var animationType = animation[0];
 		var animationImage = animation[1];
 		var animationTime = animation[2];
+		var animationParams = animation[3];
 		// If the animation is over, goes to the next moment
 		if (animationTimer > animationTime) {
 			animationTimer = 0;
@@ -56,11 +57,19 @@ function draw() {
 		}
 		// Otherwise, advances the animation
 		else {
+			var t = animationTimer/animationTime;
 			if (animationType == "fadeIn") {
-				images[animationImage].alpha = (animationTimer/animationTime);
+				images[animationImage].alpha = lerp(0, 1, t);
 			}
 			else if (animationType == "fadeOut") {
-				images[animationImage].alpha = 1-(animationTimer/animationTime);
+				images[animationImage].alpha = lerp(1, 0, t);
+			}
+			else if (animationType == "moveMapIcon") {
+				var startPos = animationParams.startPos;
+				var endPos = animationParams.endPos;
+				map.icons[animationImage].x = lerp(startPos.x, endPos.x, t);
+				map.icons[animationImage].y = lerp(startPos.y, endPos.y, t);
+				console.log(map.icons[animationImage].x);
 			}
 			animationTimer++;
 		}
@@ -72,12 +81,9 @@ function draw() {
 }
 
 function nextMoment() {
-	console.log(scenes[currentScene]);
-	console.log(currentMoment);
 	if (currentMoment < scenes[currentScene].length - 1) {
 		currentMoment++;
 		var moment = scenes[currentScene][currentMoment];
-		console.log(moment);
 		if (moment[0] == "talk") {
 			dialogueCharacter = moment[1];
 			setDialogueText(moment[2]);
@@ -87,6 +93,7 @@ function nextMoment() {
 			animation[0] = moment[1];
 			animation[1] = moment[2];
 			animation[2] = moment[3];
+			animation[3] = moment[4];
 			gameState = "animation";
 		}
 		else if (moment[0] == "goto") {

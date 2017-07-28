@@ -42,3 +42,9 @@ ctx.font = "bold "+fontSize+"px "+font;
 
 canvasRect.x = canvas.offsetLeft;
 canvasRect.y = canvas.offsetTop;
+
+// Utility functions
+
+function lerp(start, end, pos) {
+	return pos*end + (1-pos)*start;
+}
