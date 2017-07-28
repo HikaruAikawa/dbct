@@ -18,8 +18,11 @@ function draw() {
 	
 	ctx.clearRect(0, 0, canvasWidth, canvasHeight);
 	
+	drawMap();
+	
 	characters.forEach(function(character) {
 		drawIcon(character);
+		drawMapIcon(character);
 	});
 	drawTextBubble(dialogueCharacter);
 	
@@ -41,8 +44,6 @@ function draw() {
 	if (gameState == "dialogueInput") {
 		drawDialogueButton();
 	}
-	
-	drawMap();
 	
 	if (gameState == "animation") {
 		var animationType = animation[0];

@@ -20,13 +20,14 @@ ctx.imageSmoothingEnabled = false;
 	}
 	
 	// Adds an image by image name
-	function addImage(imageName) {
+	function addImage(imageName, imageSrc) {
 		var newImage = new Image();
 		newImage.onload = function() {
 			images[imageName].isLoaded = true;
 			if (areAllImagesLoaded()) onAllImagesLoaded();
 		}
-		newImage.src = "assets/"+imageName+".png";
+		if (typeof imageSrc === "undefined") newImage.src = "assets/"+imageName+".png";
+		else newImage.src = "assets/"+imageSrc+".png";
 		imagesDiv.appendChild(newImage);
 		images[imageName] = newImage;
 		images[imageName].isLoaded = false;
@@ -37,6 +38,7 @@ ctx.imageSmoothingEnabled = false;
 	characters.forEach(function(character) {
 		addImage(character);
 		addImage(character+"Text");
+		addImage(character+"Map", character);
 	});
 	
 	addImage("map");
@@ -66,6 +68,10 @@ function drawText(text, x, y) {
 
 function drawMap() {
 	drawImage("map", map.x, map.y, map.w, map.h);
+}
+
+function drawMapIcon(character) {
+	drawImage(character+"Map", map.icons[character].x, map.icons[character].y, map.icons[character].w, map.icons[character].h);
 }
 
 // Draws the button for advancing dialogue
