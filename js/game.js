@@ -71,19 +71,26 @@ function draw() {
 }
 
 function nextMoment() {
+	console.log(scenes[currentScene]);
+	console.log(currentMoment);
 	if (currentMoment < scenes[currentScene].length - 1) {
 		currentMoment++;
 		var moment = scenes[currentScene][currentMoment];
+		console.log(moment);
 		if (moment[0] == "talk") {
 			dialogueCharacter = moment[1];
 			setDialogueText(moment[2]);
 			gameState = "dialogue";
 		}
-		else if (moment[0] = "animation") {
+		else if (moment[0] == "animation") {
 			animation[0] = moment[1];
 			animation[1] = moment[2];
 			animation[2] = moment[3];
 			gameState = "animation";
+		}
+		else if (moment[0] == "goto") {
+			currentMoment = moment[1]-1;
+			nextMoment();
 		}
 	}
 }
