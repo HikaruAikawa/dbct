@@ -51,7 +51,7 @@ function drawImage(imageName, x, y, w, h) {
 }
 
 function drawIcon(character) {
-	drawImage(character, dialogueIcons[character].x, dialogueIcons[character].y, iconWidth, iconHeight);
+	drawImage(character, dialogueIcons[character].x, dialogueIcons[character].y, dialogueIcons[character].w, dialogueIcons[character].h);
 }
 
 function drawTextBubble(character) {
@@ -64,13 +64,13 @@ function drawText(text, x, y) {
 
 // Draws the button for advancing dialogue
 function drawDialogueButton() {
-	setColour("255,255,255");
-	ctx.fillRect(dialogueButtonRect.x, dialogueButtonRect.y, dialogueButtonRect.w, dialogueButtonRect.h);
+	setColour(dialogueButton.colour);
+	ctx.fillRect(dialogueButton.x, dialogueButton.y, dialogueButton.w, dialogueButton.h);
 	var text = "Next";
 	// The last terms are just for fine-tuning, they can be freely changed
-	var textX = dialogueButtonRect.x + (dialogueButtonRect.w/2) - ((text.length/2)*fontSize*fontRatio) - 8;
-	var textY = dialogueButtonRect.y + (dialogueButtonRect.h/2) - (fontSize/2) + 4;
-	setColour("0,0,0");
+	var textX = dialogueButton.x + (dialogueButton.w/2) - ((text.length/2)*fontSize*fontRatio) - 8;
+	var textY = dialogueButton.y + (dialogueButton.h/2) - (fontSize/2) + 4;
+	setColour(textColour);
 	drawText(text, textX, textY);
 }
 

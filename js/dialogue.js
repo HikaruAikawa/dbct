@@ -8,6 +8,9 @@ var dialogueDelay = 3;
 // The character that is currently speaking
 var dialogueCharacter;
 
+dialogueButton.colour = "255,255,255";
+textColour = "0,0,0";
+
 // The cursor contains the current line and character position to be displayed
 var dialogueCursor = {i: 0, j: 0};
 dialogueCursor.iMax = Math.floor(dialogueRect.h / fontSize);

@@ -9,9 +9,6 @@ function start() {
 	currentMoment = -1;  // Initialized as -1 so that nextMoment will set it to 0
 	nextMoment();
 	images["guest"].alpha = 0;
-	//ctx.fillStyle = "rgb(255,255,255)";
-	
-	//setAlpha("detective", 0.5);
 	
 }
 

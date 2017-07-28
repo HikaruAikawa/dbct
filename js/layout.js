@@ -20,4 +20,4 @@ var textBubbleRect = {x: 587, y: 0, w: 437, h: 380};
 var dialogueOffset = 32;
 var dialogueRect = {x: textBubbleRect.x+dialogueOffset, y: textBubbleRect.y+dialogueOffset, w: textBubbleRect.w-(2*dialogueOffset), h: textBubbleRect.h-(2*dialogueOffset)};
 
-var dialogueButtonRect = {x: textBubbleRect.x, y: textBubbleRect.y+textBubbleRect.h, w: textBubbleRect.w, h: 32};
+var dialogueButton = {x: textBubbleRect.x, y: textBubbleRect.y+textBubbleRect.h, w: textBubbleRect.w, h: 32};

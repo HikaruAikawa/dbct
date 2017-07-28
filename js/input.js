@@ -9,9 +9,7 @@ function clickHandler (e) {
 	//testY = clickY;
 	if (gameState == "dialogueInput") {
 		// If the click is inside the dialogue button
-		if (clickX > dialogueButtonRect.x && clickX < dialogueButtonRect.x + dialogueButtonRect.w && clickY > dialogueButtonRect.y && clickY < dialogueButtonRect.y + dialogueButtonRect.h) {
-			//setDialogueText("And this is a test to see if the \"Next\" button works.");
-			//dialogueCharacter = "detective";
+		if (clickX > dialogueButton.x && clickX < dialogueButton.x + dialogueButton.w && clickY > dialogueButton.y && clickY < dialogueButton.y + dialogueButton.h) {
 			nextMoment();
 		}
 	}
