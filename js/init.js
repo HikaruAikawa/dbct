@@ -24,6 +24,8 @@ var animationTimer = 0;
 
 var mapChoices = {};
 
+var sceneEvents = [];
+
 var testX = 0;
 var testY = 0;
 

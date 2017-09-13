@@ -16,7 +16,7 @@ function clickHandler (e) {
 	}
 	else if (gameState == "mapInput") {
 		// Checks if the click is in each of the rooms
-		mapChoices.forEach(function(room) {
+		Object.keys(mapChoices).forEach(function(room) {
 			// Only checks for the rooms that are in the mapChoices
 			if (mapChoices[room]) {
 				if (isPointInRect(clickPoint, map.sections[room])) {

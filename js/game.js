@@ -24,7 +24,6 @@ function draw() {
 		drawIcon(character);
 		drawMapIcon(character);
 	});
-	drawTextBubble(dialogueCharacter);
 	
 	// Draws text from the text buffer
 	if (gameState == "dialogue") {
@@ -38,6 +37,7 @@ function draw() {
 	}
 	
 	if (gameState == "dialogue" || gameState == "dialogueInput") {
+		drawTextBubble(dialogueCharacter);
 		drawDialogueText();
 	}
 	
@@ -53,6 +53,7 @@ function draw() {
 		// If the animation is over, goes to the next moment
 		if (animationTimer > animationTime) {
 			animationTimer = 0;
+			animation = [];
 			nextMoment();
 		}
 		// Otherwise, advances the animation
@@ -66,8 +67,9 @@ function draw() {
 			}
 			else if (animationType == "moveMapIcon") {
 				// If there is no startPos, then move from the current position
-				if (!animationParams.startPos) animationParams.startPos = {x: map.icons[animationImage].x, y: map.icons[animationImage].y};
-				var startPos = animationParams.startPos;
+				var startPos;
+				if (!animationParams.startPos) startPos = {x: map.icons[animationImage].x, y: map.icons[animationImage].y};
+				else startPos = animationParams.startPos;
 				var endPos = animationParams.endPos;
 				map.icons[animationImage].x = lerp(startPos.x, endPos.x, t);
 				map.icons[animationImage].y = lerp(startPos.y, endPos.y, t);
@@ -104,6 +106,21 @@ function nextMoment() {
 		else if (moment[0] == "mapInput") {
 			mapChoices = moment[1];
 			gameState = "mapInput";
+		}
+		else if (moment[0] == "setEvent") {
+			// Pushes the event into the sceneEvents array if it's not there already
+			if (sceneEvents.indexOf(moment[1]) == -1) sceneEvents.push(moment[1]);
+			nextMoment();
+		}
+		else if (moment[0] == "checkEvents") {
+			var allTrue = true;
+			moment[1].forEach(function (event) {
+				// If any of these events has not happened, set the variable to false
+				if (sceneEvents.indexOf(event) == -1) allTrue = false;
+			});
+			if (allTrue) currentMoment = moment[2]-1;
+			else currentMoment = moment[3]-1;
+			nextMoment();
 		}
 	}
 }
