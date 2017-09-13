@@ -18,8 +18,8 @@ var dialogueButton = {x: textBubbleRect.x, y: textBubbleRect.y+textBubbleRect.h,
 var map = {
 	x: 0,
 	y: 0,
-	w: 523,
-	h: 412,
+	w: 511,
+	h: 380,
 	sections: {
 		"room1": {x: 0, y: 0, w: 261, h: 412},
 		"room2": {x: 261, y: 0, w: 262, h: 412}
