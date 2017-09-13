@@ -3,12 +3,12 @@
 function start() {
 	setInterval(draw, step);
 	
-	//setDialogueText("This is a long sentence to check if the text is correctly split across multiple lines.");
 	dialogueCharacter = "guest";
 	currentScene = 0;
 	currentMoment = -1;  // Initialized as -1 so that nextMoment will set it to 0
 	nextMoment();
 	images["guest"].alpha = 0;
+	images["map"].alpha = 0;
 	
 }
 
@@ -65,6 +65,8 @@ function draw() {
 				images[animationImage].alpha = lerp(1, 0, t);
 			}
 			else if (animationType == "moveMapIcon") {
+				// If there is no startPos, then move from the current position
+				if (!animationParams.startPos) animationParams.startPos = {x: map.icons[animationImage].x, y: map.icons[animationImage].y};
 				var startPos = animationParams.startPos;
 				var endPos = animationParams.endPos;
 				map.icons[animationImage].x = lerp(startPos.x, endPos.x, t);
