@@ -22,6 +22,8 @@ var fontRatio = 0.6; // This is the height-to-width ratio of the font
 var animation = [];
 var animationTimer = 0;
 
+var mapChoices = {};
+
 var testX = 0;
 var testY = 0;
 
@@ -47,4 +49,8 @@ canvasRect.y = canvas.offsetTop;
 
 function lerp(start, end, pos) {
 	return pos*end + (1-pos)*start;
+}
+
+function isPointInRect(p, rect) {
+	return (p.x>rect.x && p.x<rect.x+rect.w && p.y>rect.y && p.y<rect.y+rect.h);
 }
