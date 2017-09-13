@@ -69,7 +69,6 @@ function draw() {
 				var endPos = animationParams.endPos;
 				map.icons[animationImage].x = lerp(startPos.x, endPos.x, t);
 				map.icons[animationImage].y = lerp(startPos.y, endPos.y, t);
-				console.log(map.icons[animationImage].x);
 			}
 			animationTimer++;
 		}
@@ -99,6 +98,10 @@ function nextMoment() {
 		else if (moment[0] == "goto") {
 			currentMoment = moment[1]-1;
 			nextMoment();
+		}
+		else if (moment[0] == "mapInput") {
+			mapChoices = moment[1];
+			gameState = "mapInput";
 		}
 	}
 }
