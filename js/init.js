@@ -9,8 +9,6 @@ var currentScene;
 var currentMoment;
 
 var canvasRect = {w: 1024, h: 768};
-var canvasWidth = 1024;
-var canvasHeight = 768;
 var iconWidth = 64;
 var iconHeight = 64;
 var mapIconWidth = 32;
@@ -40,12 +38,19 @@ var ctx = canvas.getContext("2d");
 
 gameState = "loading";
 
+// Updates the canvasRect with the global (page) coordinates of the canvas
+function updateCanvasRect() {
+	var rect = canvas.getBoundingClientRect();
+	canvasRect.x = rect.left;
+	canvasRect.y = rect.top;
+}
+
 canvas.width = canvasRect.w;
 canvas.height = canvasRect.h;
 ctx.font = "bold "+fontSize+"px "+font;
 
-canvasRect.x = canvas.offsetLeft;
-canvasRect.y = canvas.offsetTop;
+//canvasRect.x = canvas.offsetLeft;
+//canvasRect.y = canvas.offsetTop;
 
 // Utility functions
 

@@ -16,7 +16,9 @@ function start() {
 
 function draw() {
 	
-	ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+	updateCanvasRect();
+	
+	ctx.clearRect(0, 0, canvasRect.w, canvasRect.h); // canvasRect is in page coordinates, but width and height are the same so we can use them
 	
 	drawMap();
 	
