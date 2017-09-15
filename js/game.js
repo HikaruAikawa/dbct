@@ -7,7 +7,10 @@ function start() {
 	currentScene = 0;
 	currentMoment = -1;  // Initialized as -1 so that nextMoment will set it to 0
 	nextMoment();
-	images["guest"].alpha = 0;
+	characters.forEach(function(character) {
+		images[character].alpha = 0;
+		images[character+"Map"].alpha = 0;
+	});
 	images["map"].alpha = 0;
 	
 }
