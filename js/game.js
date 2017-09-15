@@ -29,12 +29,14 @@ function draw() {
 	
 	// Draws text from the text buffer
 	if (gameState == "dialogue") {
-		dialogueTimer = dialogueTimer + 1;
 		if (dialogueTimer >= dialogueDelay) {
-			dialogueTimer = 0;
+			dialogueTimer -= dialogueDelay;
 			if (!dialogueCursor.endReached) {
 				dialogueCursor.next();
 			}
+		}
+		else {
+			dialogueTimer = dialogueTimer + 1;
 		}
 	}
 	
