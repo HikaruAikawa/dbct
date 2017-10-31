@@ -7,7 +7,10 @@ function start() {
 	currentScene = 0;
 	currentMoment = -1;  // Initialized as -1 so that nextMoment will set it to 0
 	nextMoment();
-	images["guest"].alpha = 0;
+	characters.forEach(function(character) {
+		images[character].alpha = 0;
+		images[character+"Map"].alpha = 0;
+	});
 	images["map"].alpha = 0;
 	
 }
@@ -75,8 +78,15 @@ function draw() {
 				if (!animationParams.startPos) startPos = {x: map.icons[animationImage].x, y: map.icons[animationImage].y};
 				else startPos = animationParams.startPos;
 				var endPos = animationParams.endPos;
-				map.icons[animationImage].x = lerp(startPos.x, endPos.x, t);
-				map.icons[animationImage].y = lerp(startPos.y, endPos.y, t);
+				// This is just so icons don't overlap
+				var offsetX = 0;
+				var offsetY = 0;
+				if (animationImage == "butler") { offsetX = map.icons[animationImage].w; offsetY = map.icons[animationImage].h }
+				if (animationImage == "widow") { offsetX = -map.icons[animationImage].w; offsetY = map.icons[animationImage].h }
+				if (animationImage == "nephew") { offsetX = map.icons[animationImage].w; offsetY = -map.icons[animationImage].h }
+				if (animationImage == "guest") { offsetX = -map.icons[animationImage].w; offsetY = -map.icons[animationImage].h }
+				map.icons[animationImage].x = lerp(startPos.x, endPos.x + offsetX, t);
+				map.icons[animationImage].y = lerp(startPos.y, endPos.y + offsetY, t);
 			}
 			animationTimer++;
 		}
