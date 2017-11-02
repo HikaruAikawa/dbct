@@ -54,7 +54,7 @@ function draw() {
 	
 	if (gameState == "animation") {
 		var animationType = animation[0];
-		var animationImage = animation[1];
+		var animationImages = animation[1];
 		var animationTime = animation[2];
 		var animationParams = animation[3];
 		// If the animation is over, goes to the next moment
@@ -66,27 +66,31 @@ function draw() {
 		// Otherwise, advances the animation
 		else {
 			var t = animationTimer/animationTime;
-			if (animationType == "fadeIn") {
-				images[animationImage].alpha = lerp(0, 1, t);
-			}
-			else if (animationType == "fadeOut") {
-				images[animationImage].alpha = lerp(1, 0, t);
-			}
-			else if (animationType == "moveMapIcon") {
-				// If there is no startPos, then move from the current position
-				var startPos;
-				if (!animationParams.startPos) startPos = {x: map.icons[animationImage].x, y: map.icons[animationImage].y};
-				else startPos = animationParams.startPos;
-				var endPos = animationParams.endPos;
-				// This is just so icons don't overlap
-				var offsetX = 0;
-				var offsetY = 0;
-				if (animationImage == "butler") { offsetX = map.icons[animationImage].w; offsetY = map.icons[animationImage].h }
-				if (animationImage == "widow") { offsetX = -map.icons[animationImage].w; offsetY = map.icons[animationImage].h }
-				if (animationImage == "nephew") { offsetX = map.icons[animationImage].w; offsetY = -map.icons[animationImage].h }
-				if (animationImage == "guest") { offsetX = -map.icons[animationImage].w; offsetY = -map.icons[animationImage].h }
-				map.icons[animationImage].x = lerp(startPos.x, endPos.x + offsetX, t);
-				map.icons[animationImage].y = lerp(startPos.y, endPos.y + offsetY, t);
+			// Loop through all images in the array
+			for (i=0; i<animationImages.length; i++) {
+				var animationImage = animationImages[i];
+				if (animationType == "fadeIn") {
+					images[animationImage].alpha = lerp(0, 1, t);
+				}
+				else if (animationType == "fadeOut") {
+					images[animationImage].alpha = lerp(1, 0, t);
+				}
+				else if (animationType == "moveMapIcon") {
+					// If there is no startPos, then move from the current position
+					var startPos;
+					if (!animationParams.startPos) startPos = {x: map.icons[animationImage].x, y: map.icons[animationImage].y};
+					else startPos = animationParams.startPos;
+					var endPos = animationParams.endPos;
+					// This is just so icons don't overlap
+					var offsetX = 0;
+					var offsetY = 0;
+					if (animationImage == "butler") { offsetX = map.icons[animationImage].w; offsetY = map.icons[animationImage].h }
+					if (animationImage == "widow") { offsetX = -map.icons[animationImage].w; offsetY = map.icons[animationImage].h }
+					if (animationImage == "nephew") { offsetX = map.icons[animationImage].w; offsetY = -map.icons[animationImage].h }
+					if (animationImage == "guest") { offsetX = -map.icons[animationImage].w; offsetY = -map.icons[animationImage].h }
+					map.icons[animationImage].x = lerp(startPos.x, endPos.x + offsetX, t);
+					map.icons[animationImage].y = lerp(startPos.y, endPos.y + offsetY, t);
+				}
 			}
 			animationTimer++;
 		}
