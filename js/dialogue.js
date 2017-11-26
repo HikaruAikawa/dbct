@@ -4,7 +4,8 @@
 var dialogueLines = [];
 // Delay should be in frames
 var dialogueTimer = 0;
-var dialogueDelay = 3;
+//var dialogueDelay = 3;
+var dialogueDelay = 0.5;
 // The character that is currently speaking
 var dialogueCharacter;
 

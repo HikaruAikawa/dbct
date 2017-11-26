@@ -25,11 +25,5 @@ function clickHandler (e) {
 				}
 			}
 		});
-		if (isPointInRect(clickPoint, map.sections["room1"])) {
-			console.log("room1");
-		}
-		if (isPointInRect(clickPoint, map.sections["room2"])) {
-			console.log("room2");
-		}
 	}
 }

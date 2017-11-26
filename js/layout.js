@@ -21,8 +21,8 @@ var map = {
 	w: 511,
 	h: 380,
 	sections: {
-		"room1": {x: 0, y: 0, w: 255, h: 412},
-		"room2": {x: 256, y: 0, w: 255, h: 412}
+		"entrance": {x: 256-32, y: 380-64, w: 255, h: 412},
+		"living_room": {x: 320, y: 300, w: 255, h: 412}
 	},
 	icons: {
 		"detective": {x: 64, y: 64},
